@@ -1,15 +1,15 @@
 ;;; Project Euler, problem 79
 
 (defparameter *keylog*
-  '(319 680 180 690 129 620 762 689 762 318
-    368 710 720 710 629 168 160 689 716 731
-    736 729 316 729 729 710 769 290 719 680
-    318 389 162 289 162 718 729 319 790 680
-    890 362 319 760 316 729 380 319 728 716))
+  '((3 1 9) (6 8 0) (1 8 0) (6 9 0) (1 2 9) (6 2 0) (7 6 2) (6 8 9) (7 6 2) (3 1 8)
+    (3 6 8) (7 1 0) (7 2 0) (7 1 0) (6 2 9) (1 6 8) (1 6 0) (6 8 9) (7 1 6) (7 3 1)
+    (7 3 6) (7 2 9) (3 1 6) (7 2 9) (7 2 9) (7 1 0) (7 6 9) (2 9 0) (7 1 9) (6 8 0)
+    (3 1 8) (3 8 9) (1 6 2) (2 8 9) (1 6 2) (7 1 8) (7 2 9) (3 1 9) (7 9 0) (6 8 0)
+    (8 9 0) (3 6 2) (3 1 9) (7 6 0) (3 1 6) (7 2 9) (3 8 0) (3 1 9) (7 2 8) (7 1 6)))
 
 ;;; brute-force
 ;;; O(?)
-;;; run time: 48 s
+;;; run time: 32 s
 (defun problem-079 (&optional (keylog *keylog*))
   (labels ((digits (n &optional (base 10))
 	     "Get list of digits of number N according to BASE."
@@ -19,18 +19,17 @@
 
 	   (digit-order-p (digits keylog)
 	     "Compare order of DIGITS according to REF."
-	     (loop for key in keylog
-		   for key-digits = (digits key)
+	     (loop for key-digits in keylog
 		   always (loop for k in key-digits
 				for pos = (position k digits) then (position k digits :start pos)
 				always pos))))
-    (loop for i from 0
+    (loop with keylog-1 = (remove-duplicates keylog)
+	  for i from 0
 	  for d = (digits i)
-	  until (digit-order-p d keylog) ; 48 s run time
-         ;until (digit-order-p d (remove-duplicates keylog)) ; FIXME: doesn't finish
+	  until (digit-order-p d keylog-1)
 	  finally (return i))))
 
 #+sbcl
 (sb-rt:deftest test-079
-    (problem-079 '(317 532 178))
+    (problem-079 '((3 1 7) (5 3 2) (1 7 8)))
   531278)
