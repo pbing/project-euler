@@ -1,4 +1,3 @@
-;;; -*- Lisp -*-
 ;;; Project Euler
 ;;; http://projecteuler.net/
 
@@ -44,3 +43,12 @@
 	       (:file "187")
 	       (:file "204")
 	       (:file "255")))
+
+;;; for test do: (asdf:test-system :euler)
+(defmethod perform ((o test-op) (s (eql (find-system :euler))))
+  (funcall (intern "DO-TESTS" "SB-RT"))
+  t)
+
+;;; Local Variables:
+;;; mode: Lisp
+;;; End:
