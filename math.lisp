@@ -1,4 +1,4 @@
-b;;; Project Euler, some auxiliary functions
+;;; Project Euler, some auxiliary functions
 
 (defun copy-array (array)
   "Copy an ARRAY."
