@@ -55,14 +55,14 @@
 
 ;;; https://en.wikipedia.org/wiki/Modular_exponentiation
 (defun expt-mod (base exponent modulus)
-  (if (= modulus 1) (return-from expt-mod 0))
+  (if (= modulus 1)
+    (return-from expt-mod 0))
 
   (let ((result 1))
     (setf base (mod base modulus))
-
     (loop
       while (> exponent 0)
-      when (= (mod exponent 2) 1)
+      if (= (mod exponent 2) 1)
         do (setf result (mod (* result base) modulus))
       do
          (setf exponent (truncate exponent 2))
