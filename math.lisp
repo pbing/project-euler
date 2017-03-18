@@ -1,4 +1,4 @@
-;;; Project Euler, some auxiliary functions
+b;;; Project Euler, some auxiliary functions
 
 (defun copy-array (array)
   "Copy an ARRAY."
@@ -55,9 +55,9 @@
 
 ;;; https://en.wikipedia.org/wiki/Modular_exponentiation
 (defun expt-mod (base exponent modulus)
+  "Return the modular exponentiation (BASE ** EXPONENT) mod MODULUS."
   (if (= modulus 1)
     (return-from expt-mod 0))
-
   (let ((result 1))
     (setf base (mod base modulus))
     (loop
