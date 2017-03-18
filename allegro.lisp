@@ -90,6 +90,7 @@
   (test 7273                (problem-067))
   (test 531278              (problem-079 '((3 1 7) (5 3 2) (1 7 8))))
   (test 8739992577          (problem-097))
+  (test '(15 6)             (problem-100 20) :multiple-values t)
   (test 4                   (problem-108 (1- 3)))
   (test 10                  (problem-187 30))
   (test 1105                (problem-204 (expt 10 8) 5))
