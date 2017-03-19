@@ -1,5 +1,10 @@
 ;;; Top Level file for Allegro Common Lisp
 
+; comp:*cltl1-compile-file-toplevel-compatibility-p*
+
+(eval-when (:execute :load-toplevel :compile-toplevel)
+  (in-package "CL-USER"))
+
 (defsystem :euler ()
   (:serial
    "split-sequence/split-sequence"
@@ -50,8 +55,9 @@
 
 (load-system :euler :compile t)
 
-(require :tester)
-(use-package :util.test)
+(eval-when (:execute :load-toplevel :compile-toplevel)
+  (require :tester)
+  (use-package :util.test))
 
 (with-tests (:name "ALL-TESTS")
   (test 23                  (problem-001 10))
