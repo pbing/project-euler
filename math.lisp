@@ -40,7 +40,7 @@
 (defun primep (n)
   "Is N prime?"
   (or (or (= n 2) (= n 3) (= n 5) (= n 7))
-      (and (> n 8)
+      (and (>= n 11)
            (let ((r (rem n 6))) (or (= r 1) (= r 5)))
            (loop for i from 6 to (max 6 (isqrt n)) by 6
                never (or (zerop (rem n (1- i)))
