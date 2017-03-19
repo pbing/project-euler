@@ -84,6 +84,7 @@
   (test (+ 1634 8208 9474)  (problem-030 4))
   (test 73682               (problem-031))
   (test 40730               (problem-034))
+  (test 13                  (problem-035 100))
   (test 872187              (problem-036))
   (test 4231                (problem-041 4))
   (test 0405071317          (problem-048 10))
