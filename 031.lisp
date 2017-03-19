@@ -11,7 +11,6 @@
         do (incf result (problem-031 (- amount i) (rest coins)))
         else
         do (incf result))
-
     result))
 
 
