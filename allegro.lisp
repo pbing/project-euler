@@ -30,6 +30,7 @@
     "024"
     "025"
     "030"
+    "031"
     "034"
     "036"
     "041"
@@ -81,6 +82,7 @@
   (test 120                 (problem-024 '(0 1 2) 4))
   (test 12                  (problem-025 3))
   (test (+ 1634 8208 9474)  (problem-030 4))
+  (test 73682               (problem-031))
   (test 40730               (problem-034))
   (test 872187              (problem-036))
   (test 4231                (problem-041 4))
