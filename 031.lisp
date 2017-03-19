@@ -13,9 +13,7 @@
         do (incf result))
     result))
 
-
-
 #+sbcl
 (sb-rt:deftest test-031
-    (problem-031 200)
+    (problem-031)
   73682)
