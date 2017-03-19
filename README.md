@@ -24,22 +24,6 @@ T
 ## Allegro CL
 ```
 CL-USER(1): :ld allegro.lisp
-; Loading /Users/bernd/Projects/Lisp/Project Euler/allegro.lisp
-; Loading system: "EULER".
-;   Loading product for module: "split-sequence/split-sequence".
-;   Fast loading
-;      /Users/bernd/Projects/Lisp/Project Euler/split-sequence/split-sequence.fasl
-;   Loading product for module: "math".
-;   Fast loading /Users/bernd/Projects/Lisp/Project Euler/math.fasl
-;   Loading product for module: "001".
-;   Fast loading /Users/bernd/Projects/Lisp/Project Euler/001.fasl
-;   Loading product for module: "002".
-.
-.
-.
-;   Loading product for module: "255".
-;   Fast loading /Users/bernd/Projects/Lisp/Project Euler/255.fasl
-;   Fast loading from bundle tester/tester.fasl.
 Begin ALL-TESTS test
 **********************************
 End ALL-TESTS test
