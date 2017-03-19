@@ -60,14 +60,13 @@
 (defun expt-mod (base exponent modulus)
   "Return the modular exponentiation (BASE ** EXPONENT) mod MODULUS. All arguments are positive integers."
   (if (= modulus 1)
-    (return-from expt-mod 0))
+      (return-from expt-mod 0))
   (let ((result 1))
     (setf base (mod base modulus))
     (loop
-      until (zerop exponent)
-      if (oddp exponent)
-        do (setf result (mod (* result base) modulus))
-      do
-         (setf exponent (truncate exponent 2))
-         (setf base (mod (* base base) modulus)))
+        until (zerop exponent)
+        if (oddp exponent) do 
+          (setf result (mod (* result base) modulus))
+        do (setf exponent (truncate exponent 2))
+           (setf base (mod (* base base) modulus)))
     result))
