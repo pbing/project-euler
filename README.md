@@ -23,10 +23,16 @@ T
 
 ## Allegro CL
 ```
-CL-USER(1): :ld allegro.lisp
+CL-USER(2): :cl allegro-defsystem.lisp
+; Fast loading allegro-defsystem.fasl
+CL-USER(3): (load-system :euler :compile t)
+; Loading system: "EULER".
+NIL
+CL-USER(4): (do-tests)
 Begin ALL-TESTS test
 **********************************
 End ALL-TESTS test
-Errors detected in this test: 0
-Successes this test: 39
+Errors detected in this test: 0 
+Successes this test: 42
+NIL
 ```
