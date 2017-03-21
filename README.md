@@ -23,8 +23,8 @@ T
 
 ## Allegro CL
 ```
-CL-USER(2): :cl allegro-defsystem.lisp
-; Fast loading allegro-defsystem.fasl
+CL-USER(2): :cl allegro-system.lisp
+; Fast loading allegro-system.fasl
 CL-USER(3): (load-system :euler :compile t)
 ; Loading system: "EULER".
 NIL

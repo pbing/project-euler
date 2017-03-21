@@ -1,7 +1,7 @@
 ;;; Define system for Allegro Common Lisp
 ;;;
 ;;; Usage:
-;;;;    :cl allegro-defsystem.lisp
+;;;;    :cl allegro-system.lisp
 ;;;;    (load-system :euler :compile t)
 ;;;;    (do-tests)
 
