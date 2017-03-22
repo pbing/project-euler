@@ -4,8 +4,8 @@
 ;;; run-time: 0.2 s
 (defun problem-027 ()
   (let ((max-consecutive-primes 0) max-a max-b)
-    (loop for a from -999 to 999
-        do (loop for b from -999 to 999
+    (loop for a from -999 to 999 by 2        ; a must be odd
+        do (loop for b from -999 to 999 by 2 ; b must be prime, hence odd
                do (loop
                       with consecutive-primes = 0
                       for n from 0
