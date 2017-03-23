@@ -5,7 +5,7 @@
 ;;; H(x,i) = H(x/pi,i) + H(x,i-1)
 ;;; Hamming(x,n) = H(x,π(n))
 ;;; 
-;;; run-time: 0.3 sec
+;;; run-time: 0.2 sec
 (defun problem-204 (&optional (x (expt 10 9)) (n 100))
   (let* ((primes-list (nconc (list 1 2) (loop for i from 3 to n by 2 when (primep i) collect i)))
 	 (primes-count (length primes-list))

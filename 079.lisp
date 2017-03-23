@@ -9,7 +9,7 @@
 
 ;;; brute-force
 ;;; O(?)
-;;; run time: 32 s
+;;; run time: 30 s
 (defun problem-079 (&optional (keylog *keylog*))
   (labels ((digits (n &optional (base 10))
 	     "Get list of digits of number N according to BASE."

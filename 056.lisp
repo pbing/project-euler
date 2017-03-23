@@ -1,7 +1,7 @@
 ;;; Project Euler, problem 56
 
 ;;; O(N^2)
-;;; run time: 0.3 sec
+;;; run time: 0.2 sec
 (defun problem-056 (&optional (n 100) (base 10))
   (flet ((sum-of-digits (n)
 	   (loop for i = n then (truncate i base)

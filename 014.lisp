@@ -1,7 +1,7 @@
 ;;; Project Euler, problem 14
 
 ;;; O(N)
-;;; run time: 3 sec
+;;; run time: 2.3 sec
 (defun problem-014 (&optional (n 1000000))
   (flet ((collatz (i)
 	   "Count the terms of the Collatz sequence starting with N."

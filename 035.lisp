@@ -1,7 +1,7 @@
 ;;; Project Euler, problem 35
 
 ;;; O(N)
-;;; run time: 0.4 s
+;;; run time: 0.3 s
 (defun problem-035 (&optional (n 1000000))
   (let ((result 0))
     (if (> n 1)

@@ -1,7 +1,7 @@
 ;;; Project Euler, problem 30
 
 ;;; O(2^N)
-;;; run time: ~0.3s
+;;; run time: 0.2 s
 (defun problem-030 (&optional (n 5))
   (flet ((upper-bound (p)
 	   "Return the upper bound of the number with digits of power to P."

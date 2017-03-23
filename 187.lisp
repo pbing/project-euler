@@ -7,7 +7,7 @@
      when (= (length (factor i)) 2) sum 1))
 
 ;;; O(?)
-;;; run time: 8 sec
+;;; run time: 11 s
 (defun problem-187 (&optional (n (expt 10 8)))
   (let* ((m (truncate n 2))	     ; smallest prime is 2 and p1*p2<n
 	 (sieve (make-array m :element-type 'bit :initial-element 0)))

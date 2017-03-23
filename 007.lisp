@@ -1,7 +1,7 @@
 ;;; Project Euler, problem 7
 
 ;;; O(?)
-;;; run time: ~0 second
+;;; run time: 0.02 second
 (defun problem-007 (&optional (n 10001))
   (cond ((= n 0) nil)
 	((= n 1) 2)

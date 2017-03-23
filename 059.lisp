@@ -73,7 +73,7 @@ COMMON-WORDS are in the decoded text."
 		      (return-from heuristic-decode (values (vector i j k)
 							    decoded)))))))
 
-;;; run time: 2 sec
+;;; run time: 0.7 s
 (defun problem-059 (&optional (cipher-file #p"cipher1.txt") (common-words '("the" "to" "of")))
   (multiple-value-bind (pass-code decoded)
       (heuristic-decode (read-cipher cipher-file) common-words)

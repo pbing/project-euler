@@ -13,7 +13,7 @@
 ;;; Only numbers with four or seven digits are valid pandigitals.
 
 ;;; O(?)
-;;; run time: 0.3 sec
+;;; run time: 0.1 s
 (defun problem-041 (&optional (n 9))
   (labels ((permute (digits result)
 	     "Return a list of pandigital primes with given digits."

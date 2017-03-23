@@ -1,7 +1,7 @@
 ;;; Project Euler, problem 34
 
 ;;; O(?)
-;;; run time: ~1.3 sec
+;;; run time: 0.6 sec
 (defun problem-034 ()
   ;; cache factorials of digits 0-9
   (let ((factorials (make-array 10 :initial-contents (loop for i from 0 to 9 collect (factorial i)))))
