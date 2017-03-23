@@ -1,7 +1,7 @@
 ;;; Project Euler, problem 27
 
 ;;; O(?)
-;;; run-time: 0.2 s
+;;; run-time: 0.1 s
 (defun problem-027 ()
   (let ((max-consecutive-primes 0) max-a max-b)
     (loop for a from -999 to 999 by 2        ; a must be odd
