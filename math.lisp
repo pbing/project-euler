@@ -59,7 +59,7 @@
 
 ;;; https://en.wikipedia.org/wiki/Modular_exponentiation
 ;;; https://github.com/Publitechs/cl-utilities/blob/master/expt-mod.lisp
-(defun expt-mod (base exponent moadulus)
+(defun expt-mod (base exponent modulus)
   "Return the modular exponentiation (BASE ** EXPONENT) mod MODULUS."
   (cond ((= modulus 1) 0)
         ((some (complement #'integerp) (list base exponent modulus)) (mod (expt base exponent) modulus))
