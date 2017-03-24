@@ -39,6 +39,7 @@
 ;;; Use (6k - 1) and (6k + 1) as possible prime numbers.
 (defun primep (n)
   "Is N prime?"
+  (setf n (abs n))
   (or (or (= n 2) (= n 3) (= n 5) (= n 7))
       (and (>= n 11)
            (let ((r (rem n 6))) (or (= r 1) (= r 5)))
