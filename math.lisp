@@ -1,4 +1,4 @@
-;;; Project Euler, some auxiliary functions
+;;;; Project Euler, some auxiliary functions
 
 (defun copy-array (array)
   "Copy an ARRAY."
@@ -61,14 +61,16 @@
 ;;; https://github.com/Publitechs/cl-utilities/blob/master/expt-mod.lisp
 (defun expt-mod (base exponent modulus)
   "Return the modular exponentiation (BASE ** EXPONENT) mod MODULUS."
-  (declare (fixnum base exponent modulus))
   (if (= modulus 1)
       (return-from expt-mod 0))
+  (if (zerop exponent)
+      (return-from expt-mod 1))
   (setf base (mod base modulus))
-  (loop with result fixnum = 1
-      until (zerop exponent)
-      if (oddp exponent) do
-        (setf result (mod (* result base) modulus))
+  (loop with result = 1
+      if (oddp exponent)
+      do (setf result (mod (* result base) modulus))
+      end
       do (setf exponent (ash exponent -1))
-         (setf base (mod (* base base) modulus))
+      until (zerop exponent)
+      do (setf base (mod (* base base) modulus))
       finally (return result)))
