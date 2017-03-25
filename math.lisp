@@ -1,4 +1,4 @@
-;;; Project Euler, some auxiliary functions
+;;;; Project Euler, some auxiliary functions
 
 (defun copy-array (array)
   "Copy an ARRAY."
@@ -37,7 +37,7 @@
     (= n reversed)))
 
 ;;; Use (6k - 1) and (6k + 1) as possible prime numbers.
-(defun primep (n)
+#+(or)(defun primep (n)
   "Is N prime?"
   (setf n (abs n))
   (or (or (= n 2) (= n 3) (= n 5) (= n 7))
@@ -46,6 +46,75 @@
            (loop for i from 6 to (max 6 (isqrt n)) by 6
                never (or (zerop (rem n (1- i)))
                          (zerop (rem n (1+ i))))))))
+
+;;; User Miller-Rabin with base 2 and 3 for prime test (n < 1,373,653)
+;;; Use Fermat's little theorem with base 2 and 3 for probalistic prime detection.
+;;; Possible false positives with Carmichael numbers (561, 1105, 1729, 2465, 2821, 6601, 8911, ...).
+;;;
+;;; Run time is much slower.
+;;; Example: (time (loop repeat 1000000 do (primep 10007)))
+;;;
+;;; n        6(k-1), 6(k+1)   Fermat's   heap alloc
+;;; -----------------------------------------------
+;;; 11       0.046990         0.375089
+;;; 23       0.048246         0.472256
+;;; 53       0.050458         0.586807
+;;; 101      0.051662         0.610384
+;;; 211      0.064844         0.671158
+;;; 503      0.195546         0.886546
+;;; 1009     0.225225         0.931946
+;;; 2003     0.261175         0.987693
+;;; 5003     0.330764         1.071443
+;;; 10007    0.404001         1.176433
+;;; 20011    0.563469         1.221680
+;;; 23581    0.608607         1.245706
+;;; 23593    0.609785         1.297781  yes
+;;; 50021    0.795351         2.452829  yes
+;;; 100003   1.065865         5.593620  yes
+;;; 200003   1.387693         7.252047  yes
+;;; 500009   2.053946         7.426340  yes
+;;; 1000003  2.861031         8.494976  yes
+(defun miller-rabin-1 (n)
+  "Helper function for PRIMEP.
+   Decompose (n - 1) = d • 2^r"
+  (loop
+      with r = 0
+      and d = (1- n)
+      while (evenp d)
+      do (incf r)
+         (setf d (ash d -1))
+      finally (return (values d r))))
+
+(defun miller-rabin-2 (r x n)
+  "Helper function for PRIMEP."
+  (loop
+      repeat (1- r)
+      with n-1 = (1- n)
+      do (setf x (mod (* x x) n))
+         ;(format t "(2) r=~d x=~d~%" r x)
+      if (= x 1)
+      do (return nil)
+      if (= x n-1)
+      do (return t)
+      finally (return nil)))
+
+(defun primep (n)
+  "Is N prime?"
+  (setf n (abs n))
+  (unless (< n 1373653) (warn "(PRIMEP N) should be less than 1373653."))
+  (if (or (= n 2) (= n 3)) (return-from primep t))
+  (if (evenp n) (return-from primep nil))
+  (if (< n 2) (return-from primep nil))
+  (multiple-value-bind (d r)
+      (miller-rabin-1 n)
+    (loop
+        with n-1 = (1- n)
+        for a from 2 to 3
+        for x = (expt-mod a d n)
+        ;do (format t "(1) a=~d d=~d r=~d x=~d~%" a d r x)
+        always (or (= x 1)
+                   (= x n-1)
+                   (miller-rabin-2 r x n)))))
 
 ;;; http://groups.google.com.ai/group/comp.lang.lisp/msg/6bb75f006221fd4c
 (defun permutations (items)
