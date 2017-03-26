@@ -1,6 +1,6 @@
-;;; Define system for Allegro Common Lisp
-;;;
-;;; Usage:
+;;;; Define system for Allegro Common Lisp
+;;;;
+;;;; Usage:
 ;;;;    :cl allegro-system.lisp
 ;;;;    (load-system :euler :compile t)
 ;;;;    (do-tests)
@@ -11,6 +11,9 @@
       (:module-group problems
                      (:parallel
                       "math"
+                      "primep-by-trial-division"
+                      ;"primep-by-fermat"
+                      ;"primep-by-miller-rabin"
                       "001"
                       "002"
                       "003"
