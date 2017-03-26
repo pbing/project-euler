@@ -1,4 +1,5 @@
 ;;;; Primality test by trial division
+;;;; https://en.wikipedia.org/wiki/Primality_test
 
 ;;; Use (6k - 1) and (6k + 1) as possible prime numbers.
 ;;; https://en.wikipedia.org/wiki/Primality_test
