@@ -54,12 +54,12 @@
       (return-from expt-mod 0))
   (if (zerop exponent)
       (return-from expt-mod 1))
-  (setf base (mod base modulus))
+  (setf base (rem base modulus))
   (loop with result = 1
       if (oddp exponent)
-      do (setf result (mod (* result base) modulus))
+      do (setf result (rem (* result base) modulus))
       end
       do (setf exponent (ash exponent -1))
       until (zerop exponent)
-      do (setf base (mod (* base base) modulus))
+      do (setf base (rem (* base base) modulus))
       finally (return result)))
