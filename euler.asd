@@ -4,6 +4,9 @@
 (defsystem :euler
     :depends-on (:split-sequence #+sbcl :sb-rt)
     :components ((:file "math")
+                 (:file "primep-by-trial-division")
+                 ;(:file "primep-by-fermat")
+                 ;(:file "primep-by-miller-rabin")
                  (:file "001")
                  (:file "002")
                  (:file "003")
