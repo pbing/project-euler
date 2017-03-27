@@ -4,6 +4,9 @@
 ;;; Implement with bases 2 and 3 for probalistic prime detection.
 ;;; Possible false positives with Carmichael numbers (561, 1105, 1729, 2465, 2821, 6601, 8911, ...).
 ;;;
+;;; CL-USER: (mapcar #'primep-by-fermat '(561 1105 1729 2465 2821 6601 8911))
+;;; (NIL T T T T T T)
+;;;
 ;;; Run time is much slower.
 ;;; Example: (time (loop repeat 1000000 do (primep 10007)))
 ;;;
