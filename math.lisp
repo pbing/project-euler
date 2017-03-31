@@ -57,8 +57,8 @@
 ;;; https://en.wikipedia.org/wiki/Modular_exponentiation
 ;;; https://github.com/Publitechs/cl-utilities/blob/master/expt-mod.lisp
 (defun expt-mod (base exponent modulus)
-  (declare (type (integer 0) base exponent modulus))
   "Return the modular exponentiation (BASE ** EXPONENT) mod MODULUS."
+  (declare (type (integer 0) base exponent modulus))
   (if (= modulus 1)
       (return-from expt-mod 0))
   (if (zerop exponent)
