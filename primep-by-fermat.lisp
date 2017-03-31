@@ -33,6 +33,7 @@
 ;;; 1000003  3.532821         7.532901   yes
 (defun primep (n)
   "Is N prime?"
+  (declare (integer n))
   (setf n (abs n))
   (or (= n 2) (= n 3)
       (and (= 1 (expt-mod 2 (1- n) n))

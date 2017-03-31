@@ -55,6 +55,7 @@
 (defun primep (n)
   "Is N prime?
    Deterministic for N < 1,373,653."
+  (declare (integer n))
   (setf n (abs n))
   (if (or (= n 2) (= n 3)) (return-from primep t))
   (if (evenp n) (return-from primep nil))
