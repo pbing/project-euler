@@ -11,8 +11,8 @@
   "Number of divisors of N."
   (declare (integer n))
   (loop
-      for factors of-type integer = (factor n) then (delete factor factors)
-      for factor of-type integer = (first factors)
+      for factors = (factor n) then (delete factor factors)
+      for factor  = (first factors)
       for result of-type integer = #1=(1+ (count factor factors)) then (* result #1#)
       until (null factor)
       finally (return result)))

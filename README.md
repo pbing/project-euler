@@ -21,6 +21,23 @@ T
 ```
 
 
+## CCL
+```
+CL-USER> (require :asdf)
+:ASDF
+NIL
+CL-USER> (asdf:load-system :euler)
+T
+CL-USER> (asdf:test-system :euler)
+Begin ALL-TESTS test
+**********************************
+End ALL-TESTS test
+Errors detected in this test: 0 
+Successes this test:43
+T
+```
+
+
 ## Allegro CL
 ```
 CL-USER(2): :cl allegro-system.lisp
@@ -33,6 +50,6 @@ Begin ALL-TESTS test
 **********************************
 End ALL-TESTS test
 Errors detected in this test: 0 
-Successes this test: 42
+Successes this test: 43
 NIL
 ```

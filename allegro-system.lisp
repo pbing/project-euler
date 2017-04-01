@@ -59,4 +59,4 @@
                       "255")))
   (:serial
       :problems
-      "allegro-tests"))
+      "problem-tests"))
