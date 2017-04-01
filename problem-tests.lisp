@@ -1,4 +1,4 @@
-;;;; Test suite for Allegro Common Lisp
+;;;; Test suite for Allegro Common Lisp and Clozure Common Lisp
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
   #+allegro (require :tester)
