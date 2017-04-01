@@ -4,7 +4,7 @@
 (in-package :asdf-user)
 
 (defsystem :euler
-  :in-order-to ((test-op (test-op euler-tests)))
+  :in-order-to ((test-op (test-op :euler-tests)))
   :depends-on (:split-sequence)
   :pathname "src"
   :components
