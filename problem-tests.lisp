@@ -19,6 +19,7 @@
     (test 40824               (problem-008))
     (test (* 3 4 5)           (multiple-value-bind (solutions triplets)
                                   (problem-009 (+ 3 4 5))
+                                (declare (ignore triplets))
                                 (first solutions)))
     (test 17                  (problem-010 10))
     (test 70600674            (problem-011))
