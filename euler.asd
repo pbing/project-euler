@@ -1,11 +1,9 @@
 ;;; Project Euler
 ;;; http://projecteuler.net/
 
-(in-package :asdf-user)
-
-(defsystem :euler
-  :in-order-to ((test-op (test-op :euler-tests)))
-  :depends-on (:split-sequence)
+(defsystem "euler"
+  :in-order-to ((test-op (test-op "euler-tests")))
+  :depends-on ("split-sequence")
   :pathname "src"
   :components
   ((:file "math")
@@ -60,20 +58,20 @@
   t)
 
 #+sbcl
-(defsystem euler-tests
-  :depends-on (:euler :sb-rt)
+(defsystem "euler-tests"
+  :depends-on ("euler" "sb-rt")
   :pathname "tests"
   :components ((:file "sb-rt")))
 
 #+allegro
-(defsystem euler-tests
-  :depends-on (:euler)
+(defsystem "euler-tests"
+  :depends-on ("euler")
   :pathname "tests"
   :components ((:file "tester")))
 
 #+ccl
-(defsystem euler-tests
-  :depends-on (:euler :ptester)
+(defsystem "euler-tests"
+  :depends-on ("euler" "ptester")
   :pathname "tests"
   :components ((:file "tester")))
 
