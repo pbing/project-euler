@@ -1,1 +1,0 @@
-ptester/ptester.asd
