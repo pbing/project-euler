@@ -1,10 +1,9 @@
 ;;;; Test suite for Allegro Common Lisp
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  #+acl (require :tester)
-  #+acl (use-package :util.test)
+  #+allegro (require :tester)
+  #+allegro (use-package :util.test)
 
-  #+ccl (require :ptester)
   #+ccl (use-package :ptester)
   )
 

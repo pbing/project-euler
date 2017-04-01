@@ -40,16 +40,15 @@ T
 
 ## Allegro CL
 ```
-CL-USER(2): :cl allegro-system.lisp
-; Fast loading allegro-system.fasl
-CL-USER(3): (load-system :euler :compile t)
-; Loading system: "EULER".
+CL-USER> (require :asdf)
 NIL
-CL-USER(4): (do-tests)
+CL-USER> (asdf:load-system :euler)
+T
+CL-USER> (asdf:test-system :euler)
 Begin ALL-TESTS test
 **********************************
 End ALL-TESTS test
 Errors detected in this test: 0 
 Successes this test: 43
-NIL
+T
 ```

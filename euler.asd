@@ -8,7 +8,6 @@
                #+sbcl :sb-rt
                #+ccl :ptester)
   :components ((:file "math")
-               (:file "primep-by-trial-division")
                (:file "001")
                (:file "002")
                (:file "003")
@@ -52,12 +51,12 @@
                (:file "187")
                (:file "204")
                (:file "255")
-               #+ccl (:file "problem-tests")))
+               #+(or allegro ccl) (:file "problem-tests")))
 
 ;;; for test do: (asdf:test-system :euler)
 (defmethod perform ((o test-op) (s (eql (find-system :euler))))
   #+sbcl (funcall (intern "DO-TESTS" "SB-RT"))
-  #+ccl (funcall (intern "DO-TESTS"))
+  #+(or allegro ccl) (funcall (intern "DO-TESTS"))
   t)
 
 ;;; Local Variables:
