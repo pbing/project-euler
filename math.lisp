@@ -17,6 +17,46 @@
       until (null factor)
       finally (return result)))
 
+
+;;; https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
+(defun egcd (a b)
+  "Extended Euclidian algorithm.
+Return (VALUES X Y) such that A * X + B * Y = GCD(A, B)."
+  (declare (integer a b))
+  (loop
+      with q of-type integer
+      and r of-type integer
+      for s0 of-type integer = 0 then (- s1 (* q s0))
+      and s1 of-type integer = 1 then s0
+      for t0 of-type integer = 1 then (- t1 (* q t0))
+      and t1 of-type integer = 0 then t0
+      until (zerop b)
+      do
+        (multiple-value-setq (q r) (truncate a b))
+        (setf a b
+              b r)
+      finally (return (values s1 t1))))
+
+;;; https://en.wikipedia.org/wiki/Modular_exponentiation
+;;; https://github.com/Publitechs/cl-utilities/blob/master/expt-mod.lisp
+(defun expt-mod (base exponent modulus)
+  "Return the modular exponentiation (BASE ** EXPONENT) mod MODULUS."
+  (declare (type integer base exponent modulus))
+  (if (= modulus 1)
+      (return-from expt-mod 0))
+  (if (zerop exponent)
+      (return-from expt-mod 1))
+  (setf base (rem base modulus))
+  (loop
+      with result of-type integer = 1
+      if (oddp exponent)
+      do (setf result (rem (* result base) modulus))
+      end
+      do (setf exponent (ash exponent -1))
+      until (zerop exponent)
+      do (setf base (rem (* base base) modulus))
+      finally (return result)))
+
 (defun factor (n)
   "Return a list of factors of N."
   (declare (integer n))
@@ -54,41 +94,18 @@
 	    (push (cons item permutation) result)))
 	'(nil))))
 
-;;; https://en.wikipedia.org/wiki/Modular_exponentiation
-;;; https://github.com/Publitechs/cl-utilities/blob/master/expt-mod.lisp
-(defun expt-mod (base exponent modulus)
-  "Return the modular exponentiation (BASE ** EXPONENT) mod MODULUS."
-  (declare (type integer base exponent modulus))
-  (if (= modulus 1)
-      (return-from expt-mod 0))
-  (if (zerop exponent)
-      (return-from expt-mod 1))
-  (setf base (rem base modulus))
+;;;; Primality test by trial division
+;;;; https://en.wikipedia.org/wiki/Primality_test
+;;; Use (6k - 1) and (6k + 1) as possible prime numbers.
+(defun primep (n)
+  "Is N prime?"
+  (declare (integer n))
+  (setf n (abs n))
+  (if (<= n 1) (return-from primep nil))
+  (if (<= n 3) (return-from primep t))
+  (if (or (evenp n) (= (rem n 3) 0)) (return-from primep nil))
   (loop
-      with result of-type integer = 1
-      if (oddp exponent)
-      do (setf result (rem (* result base) modulus))
-      end
-      do (setf exponent (ash exponent -1))
-      until (zerop exponent)
-      do (setf base (rem (* base base) modulus))
-      finally (return result)))
-
-;;; https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm
-(defun egcd (a b)
-  "Extended Euclidian algorithm.
-Return (VALUES X Y) such that A * X + B * Y = GCD(A, B)."
-  (declare (integer a b))
-  (loop
-      with q of-type integer
-      and r of-type integer
-      for s0 of-type integer = 0 then (- s1 (* q s0))
-      and s1 of-type integer = 1 then s0
-      for t0 of-type integer = 1 then (- t1 (* q t0))
-      and t1 of-type integer = 0 then t0
-      until (zerop b)
-      do
-        (multiple-value-setq (q r) (truncate a b))
-        (setf a b
-              b r)
-      finally (return (values s1 t1))))
+      for i integer from 5 by 6
+      while (<= (* i i) n)
+      never (or (zerop (rem n i))
+                (zerop (rem n (+ i 2))))))
