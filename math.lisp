@@ -52,7 +52,7 @@ Return (VALUES X Y) such that A * X + B * Y = GCD(A, B)."
       if (oddp exponent)
       do (setf result (rem (* result base) modulus))
       end
-      do (setf exponent (ash exponent -1))
+      do (setf exponent (truncate exponent 2))
       until (zerop exponent)
       do (setf base (rem (* base base) modulus))
       finally (return result)))
