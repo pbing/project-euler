@@ -28,7 +28,13 @@ CL-USER> (require :asdf)
 NIL
 CL-USER> (asdf:load-system :euler)
 T
+CL-USER> (unintern 'test)
+T
 CL-USER> (asdf:test-system :euler)
+;Compiler warnings for "home:common-lisp;project-euler;contrib;ptester;src.lisp.newest" :
+;   In (SETF GC-PRINT-STATE): Unused lexical variable STATE
+; Warning: Lisp compilation had style-warnings while compiling #<CL-SOURCE-FILE "ptester" "src">
+; While executing: UIOP/LISP-BUILD:CHECK-LISP-COMPILE-WARNINGS, in process repl-thread(13).
 Begin ALL-TESTS test
 **********************************
 End ALL-TESTS test
