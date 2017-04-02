@@ -22,13 +22,17 @@ T
 
 
 ## CCL
+When using SLIME the symbol TEST will conflict with PTESTER:TEST.
+```
+CL-USER> (unintern 'test)
+T
+```
+Now everything should work.
 ```
 CL-USER> (require :asdf)
 :ASDF
 NIL
 CL-USER> (asdf:load-system :euler)
-T
-CL-USER> (unintern 'test)
 T
 CL-USER> (asdf:test-system :euler)
 ;Compiler warnings for "home:common-lisp;project-euler;contrib;ptester;src.lisp.newest" :
